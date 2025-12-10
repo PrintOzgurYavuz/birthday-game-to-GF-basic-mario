@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Naz Tehlikede: Nil'in Gazabı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+   <video id="introVideo"> 
+   		 <source src="assets/intro.mp4" type="video/mp4">
+	</video>
+
+	<div id="videoStartScreen">
+   		 <h1>Naz Tehlikede: Nil'in Gazabı</h1>
+    		<button id="videoStartBtn">Oyunuma Hoşgeldin</button>
+	</div>
+
+    <div id="mainMenu" class="hidden">
+        <h1>Naz Tehlikede: Nil'in Gazabı</h1>
+        <button id="startGame">Oyuna Başla</button>
+    </div>
+
+    <canvas id="gameCanvas" width="1920" height="1080" class="hidden"></canvas>
+	
+    <div id="checkpointMessage" class="hidden">
+        <h2>✅ Checkpoint Alındı!</h2>
+    </div>
+
+    <div id="finalScreen" class="hidden">
+        <h1>SON</h1>
+        <img src="assets/final_photo.png" id="finalPhoto">
+        <p>Seni Kötü Kardeşinden Kurtardım Sevgilim Doğum Günün Kutlu Olsun…</p>
+        <p id="finalMessage"></p>
+    </div>
+
+    <div id="gameOverScreen" class="hidden">
+        <h1>OYUN BİTTİ</h1>
+        <p>Cesaretin kırılmasın, tekrar dene!</p>
+        <button id="restartBtn">Tekrar Dene</button>
+    </div>
+
+    <div id="levelTransition" class="hidden">
+        <h1 id="levelText">Level Geçişi</h1>
+    </div>
+
+<script src="game.js"></script>
+
+<script>
+    const intro = document.getElementById("introVideo");
+    const mainMenu = document.getElementById("mainMenu");
+    const gameCanvas = document.getElementById("gameCanvas");
+
+    const videoStartScreen = document.getElementById("videoStartScreen");
+    const videoStartBtn = document.getElementById("videoStartBtn");
+    
+    // --- Başlangıç Akışı: ---
+    
+    // Başlangıçta videoStartScreen'i göster
+    videoStartScreen.classList.remove("hidden"); 
+    intro.style.display = "none"; // Video'yu gizle
+
+    // Tıklama Olayı: Tıklayınca sesli video başlar
+    videoStartBtn.onclick = () => {
+        videoStartScreen.classList.add("hidden"); // Başlatma ekranını gizle
+        intro.style.display = "block";           // Video'yu göster
+        intro.play();                            // Sesli oynatmayı başlat (Kullanıcı tıkladığı için izin verilir)
+    };
+
+    intro.onended = () => {
+        // Video bitince videoyu gizle, menüyü göster
+        intro.style.display = "none";
+        mainMenu.classList.remove("hidden");
+    };
+
+    // Ana menüdeki butona tıklandığında (ID: startGame)
+    document.getElementById("startGame").onclick = () => {
+        mainMenu.classList.add("hidden"); 
+        gameCanvas.classList.remove("hidden"); 
+        startGame(); 
+    };
+</script>
+
+</body>
+</html>
