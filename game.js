@@ -103,7 +103,7 @@ const EMBEDDED_LEVELS = {
     	    
 // 1. Kat (LOW LEVEL)
 { x: 2750, y: GROUND_Y - 160, w: 64,  h: 64 },   // 1 blok
-{ x: 3250, y: GROUND_Y - 160, w: 128, h: 64 },   // 2 blok
+{ x: 3270, y: GROUND_Y - 160, w: 64, h: 64 },   // 2 blok
 { x: 4050, y: GROUND_Y - 160, w: 128,  h: 64 },   // 1 blok
 { x: 4600, y: GROUND_Y - 160, w: 64,  h: 64 },
 { x: 5050, y: GROUND_Y - 160, w: 64,  h: 64 },
@@ -926,5 +926,6 @@ if (restartBtn) {
         gameLoop();
     };
 }
+
 
 
