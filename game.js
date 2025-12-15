@@ -146,7 +146,7 @@ const EMBEDDED_LEVELS = {
             "y": GROUND_Y - 250,
             "w": 200,
             "h": 250,
-            "hp": 15
+            "hp": 20
         }
     }
 };
@@ -420,7 +420,7 @@ class BossEnemy {
         ctx.fillRect(this.x - cameraX, this.y - 22, this.baseW, 18);
 
         ctx.fillStyle = "red";
-        const hpRatio = Math.max(0, Math.min(1, this.hp / 12));
+        const hpRatio = Math.max(0, Math.min(1, this.hp / 20));
         ctx.fillRect(this.x - cameraX, this.y - 22, this.baseW * hpRatio, 18);
 
         // sprite
@@ -926,6 +926,7 @@ if (restartBtn) {
         gameLoop();
     };
 }
+
 
 
 
